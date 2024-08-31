@@ -1,6 +1,6 @@
 import { getCompanies } from "@/api/apicompanies";
 import { addNewJob } from "@/api/apijobs";
-import AddCompanyDrawer from "@/components/AddCompanydrawer";
+import AddCompanyDrawer from "@/components/AddCompanyDrawer.jsx";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
