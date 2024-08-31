@@ -43,7 +43,7 @@ const AddCompanyDrawer = ({ fetchCompanies }) => {
     fn: fnAddCompany,
   } = useFetch(addNewCompany);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     fnAddCompany({
       ...data,
       logo: data.logo[0],
