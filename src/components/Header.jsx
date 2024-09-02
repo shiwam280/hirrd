@@ -38,7 +38,7 @@ const Header = () => {
 
         <div className="flex gap-8">
           <SignedOut>
-            <SignIn
+            <SignInButton
               fallbackRedirectUrl="https://hirrd-rho.vercel.app/"
               signUpForceRedirectUrl="https://hirrd-rho.vercel.app/"
               mode="modal"
