@@ -38,14 +38,13 @@ const Header = () => {
 
         <div className="flex gap-8">
           <SignedOut>
-            <Button variant="outline" onClick={() => setShowSignIn(true)}>
-              Login
-            </Button>
+            <SignIn
+              fallbackRedirectUrl="https://hirrd-rho.vercel.app/"
+              signUpForceRedirectUrl="https://hirrd-rho.vercel.app/"
+              mode="modal"
+            />
           </SignedOut>
-          <SignedIn
-            fallbackRedirectUrl="https://hirrd-rho.vercel.app/"
-            signUpForceRedirectUrl="https://hirrd-rho.vercel.app/"
-          >
+          <SignedIn>
             {user?.unsafeMetadata?.role === "recruiter" && (
               <Link to="/post-job">
                 <Button variant="outline" className="rounded-xl">
@@ -78,14 +77,14 @@ const Header = () => {
         </div>
       </nav>
 
-      {showSignIn && (
+      {/* {showSignIn && (
         <div
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
           onClick={handleOverlayClick}
         >
-          <SignIn />
+         
         </div>
-      )}
+      )} */}
     </>
   );
 };
