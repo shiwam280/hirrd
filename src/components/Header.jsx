@@ -42,7 +42,10 @@ const Header = () => {
               Login
             </Button>
           </SignedOut>
-          <SignedIn>
+          <SignedIn
+            fallbackRedirectUrl="https://hirrd-rho.vercel.app/"
+            signUpForceRedirectUrl="https://hirrd-rho.vercel.app/"
+          >
             {user?.unsafeMetadata?.role === "recruiter" && (
               <Link to="/post-job">
                 <Button variant="outline" className="rounded-xl">
