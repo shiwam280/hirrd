@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       }}
       publishableKey={PUBLISHABLE_KEY}
       afterSignOutUrl="/"
+      proxyUrl="https://hirrd-rho.vercel.app/"
     >
       <App />
     </ClerkProvider>
