@@ -8,11 +8,15 @@ const Onborading = () => {
   const { user, isLoaded } = useUser();
   const navigate = useNavigate();
 
+  const navigateUser = (currRole) => {
+    navigate(currRole === "recruiter" ? "/post-job" : "/jobs");
+  };
+
   const handleRoleSelection = async (role) => {
     await user
       .update({ unsafeMetadata: { role } })
       .then(() => {
-        navigate(role === "recruiter" ? "/post-job" : "/jobs");
+        navigateUser(role);
       })
       .catch((err) => {
         console.error("Error updating role:", err);
@@ -21,9 +25,7 @@ const Onborading = () => {
 
   useEffect(() => {
     if (user?.unsafeMetadata?.role) {
-      navigate(
-        user?.unsafeMetadata?.role === "recruiter" ? "/post-job" : "/jobs"
-      );
+      navigateUser(user.unsafeMetadata.role);
     }
   }, [user]);
 

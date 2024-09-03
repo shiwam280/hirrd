@@ -5,11 +5,10 @@ import {
   SignedIn,
   SignedOut,
   SignIn,
-  SignInButton,
   UserButton,
   useUser,
 } from "@clerk/clerk-react";
-import { BriefcaseBusiness, PenBox } from "lucide-react";
+import { BriefcaseBusiness, Heart, PenBox } from "lucide-react";
 
 const Header = () => {
   const [showSignIn, setShowSignIn] = useState(false);
@@ -32,17 +31,15 @@ const Header = () => {
   return (
     <>
       <nav className="py-4 flex justify-between items-center">
-        <Link>
-          <img src="/logo.png" className="h-20" />
+        <Link to="/">
+          <img src="/logo.png" className="h-20" alt="hirrd logo" />
         </Link>
 
         <div className="flex gap-8">
           <SignedOut>
-            <SignInButton
-              fallbackRedirectUrl="https://hirrd-rho.vercel.app/"
-              signUpForceRedirectUrl="https://hirrd-rho.vercel.app/"
-              mode="modal"
-            />
+            <Button variant="outline" onClick={() => setShowSignIn(true)}>
+              Login
+            </Button>
           </SignedOut>
           <SignedIn>
             {user?.unsafeMetadata?.role === "recruiter" && (
@@ -68,23 +65,27 @@ const Header = () => {
                 />
                 <UserButton.Link
                   label="Saved Jobs"
-                  labelIcon={<BriefcaseBusiness size={15} />}
+                  labelIcon={<Heart size={15} />}
                   href="/saved-jobs"
                 />
+                <UserButton.Action label="manageAccount" />
               </UserButton.MenuItems>
             </UserButton>
           </SignedIn>
         </div>
       </nav>
 
-      {/* {showSignIn && (
+      {showSignIn && (
         <div
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
           onClick={handleOverlayClick}
         >
-         
+          <SignIn
+            signUpForceRedirectUrl="/onboarding"
+            fallbackRedirectUrl="/onboarding"
+          />
         </div>
-      )} */}
+      )}
     </>
   );
 };
